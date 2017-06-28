@@ -33,9 +33,9 @@ envs = {
 }
 
 # To download this file:
-# wget https://raw.githubusercontent.com/cctbx/cctbx_project/master/libtbx/auto_build/bootstrap.py
+# wget https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/master/libtbx/auto_build/bootstrap.py
 # or
-# curl https://raw.githubusercontent.com/cctbx/cctbx_project/master/libtbx/auto_build/bootstrap.py > bootstrap.py
+# curl https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/master/libtbx/auto_build/bootstrap.py > bootstrap.py
 
 # To get the version before the switch to git:
 # svn export -r 25697 svn://svn.code.sf.net/p/cctbx/code/trunk/libtbx/auto_build/bootstrap.py
@@ -296,7 +296,7 @@ class Toolbox(object):
         return -2
       # if url fails to open, try using curl
       # temporary fix for old OpenSSL in system Python on macOS
-      # https://github.com/cctbx/cctbx_project/issues/33
+      # https://github.com/cctbx-xfel/cctbx_project/issues/33
       subprocess.call(['/usr/bin/curl', '-o', file, url], stdout=sys.stdout,
                       stderr=sys.stderr)
       socket = None     # prevent later socket code from being run
@@ -680,33 +680,19 @@ class SourceModule(object):
 # On Windows due to absence of rsync we use pscp from the Putty programs.
 class ccp4io_module(SourceModule):
   module = 'ccp4io'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/ccp4io.gz']
-  authentarfile = ['%(cciuser)s@cci.lbl.gov', 'ccp4io.tar.gz', '/net/cci/auto_build/repositories/ccp4io']
-  authenticated = ['rsync', '%(cciuser)s@cci.lbl.gov:/net/cci/auto_build/repositories/ccp4io/']
+  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
 
 class annlib_module(SourceModule):
   module = 'annlib'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/annlib.gz']
-  authentarfile = ['%(cciuser)s@cci.lbl.gov', 'annlib.tar.gz', '/net/cci/auto_build/repositories/annlib']
-  authenticated = ['rsync', '%(cciuser)s@cci.lbl.gov:/net/cci/auto_build/repositories/annlib/']
+  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
 
 class scons_module(SourceModule):
   module = 'scons'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/scons.gz']
-  authentarfile = ['%(cciuser)s@cci.lbl.gov', 'scons.tar.gz', '/net/cci/auto_build/repositories/scons']
-  authenticated = ['rsync', '%(cciuser)s@cci.lbl.gov:/net/cci/auto_build/repositories/scons/']
+  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
 
 class boost_module(SourceModule):
   module = 'boost'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/boost.gz']
-  # Compared to rsync pscp is very slow when downloading multiple files
-  # Resort to downloading the compressed archive on Windows
-  authentarfile = ['%(cciuser)s@cci.lbl.gov',
-                   'boost_hot.tar.gz',
-                   '/net/cci/auto_build/repositories/boost_hot/']
-  authenticated = [
-    'rsync',
-    '%(cciuser)s@cci.lbl.gov:/net/cci/auto_build/repositories/boost_hot/']
+  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
 
 # external modules
 class amber_module(SourceModule):
@@ -752,9 +738,9 @@ class libsvm_module(SourceModule):
 class cctbx_module(SourceModule):
   module = 'cctbx_project'
   anonymous = ['git',
-               'git@github.com:cctbx/cctbx_project.git',
-               'https://github.com/cctbx/cctbx_project.git',
-               'https://github.com/cctbx/cctbx_project/archive/master.zip']
+               'git@github.com:cctbx-xfel/cctbx_project.git',
+               'https://github.com/cctbx-xfel/cctbx_project.git',
+               'https://github.com/cctbx-xfel/cctbx_project/archive/master.zip']
 
 class qrefine_module(SourceModule):
   module = 'qrefine'
@@ -782,19 +768,24 @@ class geostd_module(SourceModule):
 class cbflib_module(SourceModule):
   module = 'cbflib'
   anonymous = ['git',
-               'git@github.com:yayahjb/cbflib.git',
-               'https://github.com/yayahjb/cbflib.git',
-               'https://github.com/yayahjb/cbflib/archive/master.zip']
+               'git@github.com:cctbx-xfel/cbflib.git',
+               'https://github.com/cctbx-xfel/cbflib.git',
+               'https://github.com/cctbx-xfel/cbflib/archive/master.zip']
 
 class ccp4io_adaptbx(SourceModule):
   module = 'ccp4io_adaptbx'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/ccp4io_adaptbx.gz']
-  authenticated = ['svn', 'svn+ssh://%(cciuser)s@cci.lbl.gov/ccp4io_adaptbx/trunk']
+  anonymous = ['git',
+               'git@github.com:cctbx-xfel/ccp4io_adaptbx.git',
+               'https://github.com/cctbx-xfel/ccp4io_adaptbx.git',
+               'https://github.com/cctbx-xfel/ccp4io_adaptbx/archive/master.zip']
 
 class annlib_adaptbx(SourceModule):
   module = 'annlib_adaptbx'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/annlib_adaptbx.gz']
-  authenticated = ['svn', 'svn+ssh://%(cciuser)s@cci.lbl.gov/annlib_adaptbx/trunk']
+  anonymous = ['git',
+               'git@github.com:cctbx-xfel/annlib_adaptbx.git',
+               'https://github.com/cctbx-xfel/annlib_adaptbx.git',
+               'https://github.com/cctbx-xfel/annlib_adaptbx/archive/master.zip']
+
 
 class tntbx_module(SourceModule):
   module = 'tntbx'
@@ -808,8 +799,10 @@ class clipper_module(SourceModule):
 
 class gui_resources_module(SourceModule):
   module = 'gui_resources'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/gui_resources.gz']
-  authenticated = ['svn', 'svn+ssh://%(cciuser)s@cci.lbl.gov/gui_resources/trunk']
+  anonymous = ['git',
+               'git@github.com:cctbx-xfel/gui_resources.git',
+               'https://github.com/cctbx-xfel/gui_resources.git',
+               'https://github.com/cctbx-xfel/gui_resources/archive/master.zip']
 
 class opt_resources_module(SourceModule):
   module = 'opt_resources'
@@ -817,9 +810,7 @@ class opt_resources_module(SourceModule):
 
 class eigen_module(SourceModule):
   module = 'eigen'
-  anonymous = ['curl', 'http://cci.lbl.gov/repositories/eigen.gz']
-  authentarfile = ['%(cciuser)s@cci.lbl.gov', 'eigen.tar.gz', '/net/cci/auto_build/repositories/eigen']
-  authenticated = ['rsync', '%(cciuser)s@cci.lbl.gov:/net/cci/auto_build/repositories/eigen/']
+  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
 
 # Phenix repositories
 class phenix_module(SourceModule):
@@ -911,9 +902,9 @@ class labelit_regression_module(SourceModule):
 class dials_module(SourceModule):
   module = 'dials'
   anonymous = ['git',
-               'git@github.com:dials/dials.git',
-               'https://github.com/dials/dials.git',
-               'https://github.com/dials/dials/archive/master.zip']
+               'git@github.com:cctbx-xfel/dials.git',
+               'https://github.com/cctbx-xfel/dials.git',
+               'https://github.com/cctbx-xfel/dials/archive/master.zip']
 
 class dials_regression_module(SourceModule):
   module = 'dials_regression'
@@ -1598,8 +1589,8 @@ class CCIBuilder(Builder):
     'gui_resources',
     'ccp4io_adaptbx',
     'annlib_adaptbx',
-    'tntbx',
-    'clipper'
+    #'tntbx',
+    #'clipper'
   ]
   CODEBASES_EXTRA = []
   # Copy these sources from cci.lbl.gov
@@ -1732,14 +1723,14 @@ class LABELITBuilder(CCIBuilder):
 class XFELBuilder(CCIBuilder):
   CODEBASES_EXTRA = [
     'dials',
-    'labelit',
-    'cxi_xdr_xes'
+    #'labelit',
+    #'cxi_xdr_xes'
   ]
   LIBTBX_EXTRA = [
     'dials',
-    'labelit',
+    #'labelit',
     'xfel',
-    'cxi_xdr_xes',
+    #'cxi_xdr_xes',
     'prime',
     'iota'
   ]
