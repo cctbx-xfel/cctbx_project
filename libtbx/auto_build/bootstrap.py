@@ -33,9 +33,9 @@ envs = {
 }
 
 # To download this file:
-# wget https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/master/libtbx/auto_build/bootstrap.py
+# wget https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/mfxlq7915/libtbx/auto_build/bootstrap.py
 # or
-# curl https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/master/libtbx/auto_build/bootstrap.py > bootstrap.py
+# curl https://raw.githubusercontent.com/cctbx-xfel/cctbx_project/mfxlq7915/libtbx/auto_build/bootstrap.py > bootstrap.py
 
 # To get the version before the switch to git:
 # svn export -r 25697 svn://svn.code.sf.net/p/cctbx/code/trunk/libtbx/auto_build/bootstrap.py
@@ -680,19 +680,19 @@ class SourceModule(object):
 # On Windows due to absence of rsync we use pscp from the Putty programs.
 class ccp4io_module(SourceModule):
   module = 'ccp4io'
-  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
+  anonymous = ['git', '-b mfxlq7915', 'https://github.com/cctbx-xfel/%s/archive/mfxlq7915.zip' % module ]
 
 class annlib_module(SourceModule):
   module = 'annlib'
-  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
+  anonymous = ['git', '-b mfxlq7915', 'https://github.com/cctbx-xfel/%s/archive/mfxlq7915.zip' % module ]
 
 class scons_module(SourceModule):
   module = 'scons'
-  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
+  anonymous = ['git', '-b mfxlq7915', 'https://github.com/cctbx-xfel/%s/archive/mfxlq7915.zip' % module ]
 
 class boost_module(SourceModule):
   module = 'boost'
-  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
+  anonymous = ['git', '-b mfxlq7915', 'https://github.com/cctbx-xfel/%s/archive/mfxlq7915.zip' % module ]
 
 # external modules
 class amber_module(SourceModule):
@@ -737,10 +737,10 @@ class libsvm_module(SourceModule):
 # These must all provide anonymous access.
 class cctbx_module(SourceModule):
   module = 'cctbx_project'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/cctbx_project.git',
                'https://github.com/cctbx-xfel/cctbx_project.git',
-               'https://github.com/cctbx-xfel/cctbx_project/archive/master.zip']
+               'https://github.com/cctbx-xfel/cctbx_project/archive/mfxlq7915.zip']
 
 class qrefine_module(SourceModule):
   module = 'qrefine'
@@ -767,24 +767,24 @@ class geostd_module(SourceModule):
 
 class cbflib_module(SourceModule):
   module = 'cbflib'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/cbflib.git',
                'https://github.com/cctbx-xfel/cbflib.git',
-               'https://github.com/cctbx-xfel/cbflib/archive/master.zip']
+               'https://github.com/cctbx-xfel/cbflib/archive/mfxlq7915.zip']
 
 class ccp4io_adaptbx(SourceModule):
   module = 'ccp4io_adaptbx'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/ccp4io_adaptbx.git',
                'https://github.com/cctbx-xfel/ccp4io_adaptbx.git',
-               'https://github.com/cctbx-xfel/ccp4io_adaptbx/archive/master.zip']
+               'https://github.com/cctbx-xfel/ccp4io_adaptbx/archive/mfxlq7915.zip']
 
 class annlib_adaptbx(SourceModule):
   module = 'annlib_adaptbx'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/annlib_adaptbx.git',
                'https://github.com/cctbx-xfel/annlib_adaptbx.git',
-               'https://github.com/cctbx-xfel/annlib_adaptbx/archive/master.zip']
+               'https://github.com/cctbx-xfel/annlib_adaptbx/archive/mfxlq7915.zip']
 
 
 class tntbx_module(SourceModule):
@@ -799,10 +799,10 @@ class clipper_module(SourceModule):
 
 class gui_resources_module(SourceModule):
   module = 'gui_resources'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/gui_resources.git',
                'https://github.com/cctbx-xfel/gui_resources.git',
-               'https://github.com/cctbx-xfel/gui_resources/archive/master.zip']
+               'https://github.com/cctbx-xfel/gui_resources/archive/mfxlq7915.zip']
 
 class opt_resources_module(SourceModule):
   module = 'opt_resources'
@@ -810,7 +810,7 @@ class opt_resources_module(SourceModule):
 
 class eigen_module(SourceModule):
   module = 'eigen'
-  anonymous = ['git', 'https://github.com/cctbx-xfel/%s/archive/master.zip' % module ]
+  anonymous = ['git', '-b mfxlq7915', 'https://github.com/cctbx-xfel/%s/archive/mfxlq7915.zip' % module ]
 
 # Phenix repositories
 class phenix_module(SourceModule):
@@ -901,10 +901,10 @@ class labelit_regression_module(SourceModule):
 
 class dials_module(SourceModule):
   module = 'dials'
-  anonymous = ['git',
+  anonymous = ['git', '-b mfxlq7915',
                'git@github.com:cctbx-xfel/dials.git',
                'https://github.com/cctbx-xfel/dials.git',
-               'https://github.com/cctbx-xfel/dials/archive/master.zip']
+               'https://github.com/cctbx-xfel/dials/archive/mfxlq7915.zip']
 
 class dials_regression_module(SourceModule):
   module = 'dials_regression'
