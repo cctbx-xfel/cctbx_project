@@ -292,6 +292,7 @@ class get_sge_submit_command(get_submit_command):
 class get_pbs_submit_command(get_submit_command):
 
   def customize_for_method(self):
+    pass #MPI not currently working at SACLA
     if self.params.use_mpi:
       self.command = "%s mp.method=mpi" % self.command
 
